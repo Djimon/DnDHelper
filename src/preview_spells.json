@@ -1,0 +1,65 @@
+[
+{
+  "name": "Wall of Fire",
+  "level": 4,
+  "school": "evocation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "duration": "Concentration, up to 1 minute",
+  "components": {
+    "verbal": true,
+    "somatic": true,
+    "material": true,
+    "raw": "V, S, M (a small piece of phosphorus)"
+  },
+  "classes": ["sorcerer", "wizard", "druid"],
+  "save_dc": "Dexterity",
+  "damage_dice": "5d8 fire",
+  "area_of_effect": "60 feet long, 20 feet high, 1 foot thick (wall) or ringed wall 20 feet in diameter",
+  "description": "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. One side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes half damage on a successful Dexterity saving throw.",
+  "ritual": false,
+  "tags": ["sorcerer", "wizard", "druid", "level4"],
+  "type": "Evocation 4th-level spell"
+},
+{
+  "name": "Thunderwave",
+  "level": 1,
+  "school": "evocation",
+  "casting_time": "1 action",
+  "range": "Self (15-foot cube)",
+  "duration": "Instantaneous",
+  "components": {
+    "verbal": true,
+    "somatic": true,
+    "material": false,
+    "raw": "V, S"
+  },
+  "classes": ["bard", "druid", "sorcerer", "wizard"],
+  "save_dc": "Constitution",
+  "damage_dice": "2d8 thunder",
+  "area_of_effect": "15-foot cube",
+  "description": "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away. On a successful save, the creature takes half as much damage and isn't pushed.",
+  "ritual": false,
+  "tags": ["bard", "druid", "sorcerer", "wizard", "level1"],
+  "type": "Evocation 1st-level spell"
+},
+{
+  "name": "Shield",
+  "level": 1,
+  "school": "abjuration",
+  "casting_time": "1 reaction (which you take when you are hit by an attack or targeted by Magic Missile)",
+  "range": "Self",
+  "duration": "1 round",
+  "components": {
+    "verbal": true,
+    "somatic": true,
+    "material": false,
+    "raw": "V, S"
+  },
+  "classes": ["sorcerer", "wizard"],
+  "description": "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile.",
+  "ritual": false,
+  "tags": ["sorcerer", "wizard", "level1"],
+  "type": "Abjuration 1st-level spell"
+}
+]

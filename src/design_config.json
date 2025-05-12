@@ -1,0 +1,94 @@
+{
+    "background_image": {
+        "opacity": 90,
+        "path": "assets/background.png"
+    },
+    "frame": {
+      "mode": "single",
+      "color": "#000000",
+      "thickness": 2,
+      "roundness": 5
+    },
+    "school_icon": {
+        "x": 5,
+        "y": 5,
+        "width": 10,
+        "height": 10,
+        "opacity": 100,
+        "path": "icons/school.png"
+    },
+    "spell_name": {
+        "x": 10,
+        "y": 10,
+        "font_size": 12,
+        "color": "#000000"
+    },
+    "spell_level": {
+        "x": 10,
+        "y": 15,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "casting_time": {
+        "x": 10,
+        "y": 20,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "duration": {
+        "x": 10,
+        "y": 25,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "range": {
+        "x": 10,
+        "y": 30,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "area_of_effect": {
+        "x": 10,
+        "y": 35,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "area_icon": {
+        "x": 85,
+        "y": 35,
+        "width": 8,
+        "height": 8,
+        "path": "icons/area.png"
+    },
+    "concentration_icon": {
+        "x": 85,
+        "y": 5,
+        "width": 8,
+        "height": 8,
+        "path": "icons/concentration.png"
+    },
+    "components": {
+        "x": 10,
+        "y": 40,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "save_dc": {
+        "x": 10,
+        "y": 45,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "damage_dice": {
+        "x": 10,
+        "y": 50,
+        "font_size": 10,
+        "color": "#000000"
+    },
+    "description": {
+        "x": 10,
+        "y": 60,
+        "font_size": 9,
+        "color": "#000000"
+    }
+}

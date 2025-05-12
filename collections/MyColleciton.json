@@ -1,0 +1,1166 @@
+[
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Blazing orbs of fire plummet to the ground at four different points you can see within range. Each creature in a 40-foot-radius sphere centered on each point you choose must make a Dexterity saving throw. The sphere spreads around corners. A creature takes 20d6 fire damage and 20d6 bludgeoning damage on a failed save, or half as much damage on a successful one. A creature in the area of more than one fiery burst is affected only once.\n\nThe spell damages objects in the area and ignites flammable objects that aren't being worn or carried.",
+        "duration": "Instantaneous",
+        "level": "9",
+        "name": "Meteor Swarm",
+        "range": "1 mile",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level9"
+        ],
+        "type": "9th-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "You utter a word of power that can compel one creature you can see within range to die instantly.  If the creature you choose has 100 hit points or fewer, it dies. Otherwise, the spell has no effect.",
+        "duration": "Instantaneous",
+        "level": "9",
+        "name": "Power Word Kill",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "enchantment",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level9"
+        ],
+        "type": "9th-level enchantment"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "fire and a piece of sunstone"
+            ],
+            "raw": "V, S, M (fire and a piece of sunstone)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw. On a failed save, a creature takes 12d6 radiant damage and is blinded for 1 minute. On a successful save, it takes half as much damage and isn't blinded by this spell. Undead and oozes have disadvantage on this saving throw.\n\nA creature blinded by this spell makes another Constitution saving throw at the end of each of its turns. On a successful save, it is no longer blinded.\n\nThis spell dispels any darkness in its area that was created by a spell.",
+        "duration": "Instantaneous",
+        "level": "8",
+        "name": "Sunburst",
+        "range": "150 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "wizard",
+            "level8"
+        ],
+        "type": "8th-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You attempt to beguile a creature that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.\n\nWhile the creature is charmed, you have a telepathic link with it as long as the two of you are on the same plane of existence. You can use this telepathic link to issue commands to the creature while you are conscious (no action required), which it does its best to obey. You can specify a simple and general course of action, such as \"Attack that creature,\" \"Run over there,\" or \"Fetch that object.\" If the creature completes the order and doesn't receive further direction from you, it defends and preserves itself to the best of its ability.\n\nYou can use your action to take total and precise control of the target. Until the end of your next turn, the creature takes only the actions you choose, and doesn't do anything that you don't allow it to do. During this time, you can also cause the creature to use a reaction, but this requires you to use your own reaction as well.\n\nEach time the target takes damage, it makes a new Wisdom saving throw against the spell. If the saving throw succeeds, the spell ends.",
+        "duration": "Concentration, up to 1 hour",
+        "higher_levels": "When you cast this spell with a 9th-level spell slot, the duration is concentration, up to 8 hours.",
+        "level": "8",
+        "name": "Dominate Monster",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "enchantment",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level8"
+        ],
+        "type": "8th-level enchantment"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "cleric",
+            "druid",
+            "sorcerer"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten 10-foot-cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make a Dexterity saving throw. It takes 7d10 fire damage on a failed save, or half as much damage on a successful one.\n\nThe fire damages objects in the area and ignites flammable objects that aren't being worn or carried. If you choose, plant life in the area is unaffected by this spell.",
+        "duration": "Instantaneous",
+        "level": "7",
+        "name": "Fire Storm",
+        "range": "150 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "cleric",
+            "druid",
+            "sorcerer",
+            "level7"
+        ],
+        "type": "7th-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a lodestone and iron filings"
+            ],
+            "raw": "V, S, M (a lodestone and iron filings)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "This spell reverses gravity in a 50-foot-radius, 100-foot high cylinder centered on a point within range. All creatures and objects that aren't somehow anchored to the ground in the area fall upward and reach the top of the area when you cast this spell. A creature can make a Dexterity saving throw to grab onto a fixed object it can reach, thus avoiding the fall.\n\nIf some solid object (such as a ceiling) is encountered in this fall, falling objects and creature strike it just as they would during a normal downward fall. If an object or creature reaches the top of the area without striking anything, it remains there, oscillating slightly, for the duration.\n\nAt the end of the duration, affected objects and creatures fall back down.",
+        "duration": "Concentration, up to 1 minute",
+        "level": "7",
+        "name": "Reverse Gravity",
+        "range": "100 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "wizard",
+            "level7"
+        ],
+        "type": "7th-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a lodestone and a pinch of dust"
+            ],
+            "raw": "V, S, M (a lodestone and a pinch of dust)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by *[wall of force](../wall-of-force/ \"wall of force (lvl 5)\")*.\n\nA creature targeted by this spell must make a Dexterity saving throw. On a failed save, the target takes 10d6 + 40 force damage. If this damage reduces the target to 0 hit points, it is disintegrated.\n\nA disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a *[true resurrection](../true-resurrection/ \"true resurrection (lvl 9)\")* or a *[wish](../wish/ \"wish (lvl 9)\")* spell.\n\nThis spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If the target is a Huge or larger object or creation of force, this spell disintegrates a 10-foot-cube portion of it. A magic item is unaffected by this spell.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 7th level or higher, the damage increases by 3d6 for each slot level above 6th.",
+        "level": "6",
+        "name": "Disintegrate",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level6"
+        ],
+        "type": "6th-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "wizard",
+            "sorcerer"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "A small crystal sphere"
+            ],
+            "raw": "V, S, M (A small crystal sphere)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A frigid globe of cold energy streaks from your fingertips to a point of your choice within range, where it explodes in a 60-foot-radius Sphere. Each creature within the area must make a Constitution saving throw. On a failed save, a creature takes 10d6 cold damage. On a successful save, it takes half as much damage.\n\nIf the globe strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches over an area 30 feet square. This ice lasts for 1 minute. Creatures that were Swimming on the surface of frozen water are trapped in the ice. A trapped creature can use an Action to make a Strength check against your spell save DC to break free.\n\nYou can refrain from firing the globe after completing the spell, if you wish. A small globe about the size of a sling stone, cool to the touch, appears in your hand. At any time, you or a creature you give the globe to can throw the globe (to a range of 40 feet) or hurl it with a sling (to the sling\u2019s normal range). It shatters on impact, with the same Effect as the normal casting of the spell. You can also set the globe down without shattering it. After 1 minute, if the globe hasn\u2019t already shattered, it explodes.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d6 for each slot level above 6th.",
+        "level": "6",
+        "name": "Freezing Sphere",
+        "range": "300 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "wizard",
+            "level6",
+            "sorcerer"
+        ],
+        "type": "6th-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "an iron blade and a small bag containing a mixture of soils--c1ay, loam, and sand"
+            ],
+            "raw": "V, S, M (an iron blade and a small bag containing a mixture of soils--c1ay, loam, and sand)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Choose an area of terrain no larger than 40 feet on a side within range. You can reshape dirt, sand, or clay in the area in any manner you choose for the duration. You can raise or lower the area's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. So, if you affect a 40-foot square, you can create a pillar up to 20 feet high, raise or lower the square's elevation by up to 20 feet, dig a trench up to 20 feet deep, and so on. It takes 10 minutes for these changes to complete.\n\nAt the end of every 10 minutes you spend concentrating on the spell, you can choose a new area of terrain to affect.\n\nBecause the terrain\u2019s transformation occurs slowly, creatures in the area can't usually be trapped or injured by the ground's movement. This spell can't manipulate natural stone or stone construction. Rocks and structures shift to accommodate the new terrain. If the way you shape the terrain would make a structure unstable, it might collapse.\n\nSimilarly, this spell doesn't directly affect plant growth. The moved earth carries any plants along with it.",
+        "duration": "Concentration, up to 2 hours",
+        "level": "6",
+        "name": "Move Earth",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "wizard",
+            "level6"
+        ],
+        "type": "6th-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. The fog spreads around corners. It lasts for the duration or until strong wind disperses the fog, ending the spell. Its area is heavily obscured.\n\nWhen a creature enters the spell's area for the first time on a turn or starts its turn there, that creature must make a Constitution saving throw. The creature takes 5d8 poison damage on a failed save, or half as much damage on a successful one. Creatures are affected even if they hold their breath or don't need to breathe.\n\nThe fog moves 10 feet away from you at the start of each of your turns, rolling along the surface of the ground. The vapors, being heavier than air, sink to the lowest level of the land, even pouring down openings.",
+        "duration": "Concentration, up to 10 minutes",
+        "higher_levels": "When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot level above 5th.",
+        "level": "5",
+        "name": "Cloudkill",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "conjuration",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level5"
+        ],
+        "type": "5th-level conjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You attempt to beguile a humanoid that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.\n\nWhile the target is charmed, you have a telepathic link with it as long as the two of you are on the same plane of existence. You can use this telepathic link to issue commands to the creature while you are conscious (no action required), which it does its best to obey. You can specify a simple and general course of action, such as \"Attack that creature\", \"Run over there\", or \"Fetch that object\". If the creature completes the order and doesn't receive further direction from you, it defends and preserves itself to the best of its ability.\n\nYou can use your action to take total and precise control of the target. Until the end of your next turn, the creature takes only the actions you choose, and doesn't do anything that you don't allow it to do. During this time you can also cause the creature to use a reaction, but this requires you to use your own reaction as well. Each time the target takes damage, it makes a new Wisdom saving throw against the spell. If the saving throw succeeds, the spell ends.",
+        "duration": "Concentration, up to 1 minute",
+        "higher_levels": "When you cast this spell using a 6th-level spell slot, the duration is concentration, up to 10 minutes. When you use a 7th-level spell slot, the duration is concentration, up to 1 hour. When you use a spell slot of 8th level or higher, the duration is concentration, up to 8 hours.",
+        "level": "5",
+        "name": "Dominate Person",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "enchantment",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "wizard",
+            "level5"
+        ],
+        "type": "5th-level enchantment"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a small, straight piece of iron"
+            ],
+            "raw": "V, S, M (a small, straight piece of iron)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Choose a creature that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. This spell has no effect on undead. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
+        "duration": "Concentration, up to 1 minute",
+        "higher_levels": "When you cast this spell using a spell slot of 6th level or higher, you can target one additional creature for each slot level above 5th. The creatures must be within 30 feet of each other when you target them.",
+        "level": "5",
+        "name": "Hold Monster",
+        "range": "90 feet",
+        "ritual": false,
+        "school": "enchantment",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level5"
+        ],
+        "type": "5th-level enchantment"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "Flames wreathe one creature you can see within range. The target must make a Dexterity saving throw. It takes 7d6 fire damage on a failed save, or half as much damage on a successful one. On a failed save, the target also burns for the spell\u2019s duration. The burning target sheds bright light in a 30-foot radius and dim light for an additional 30 feet. At the end of each of its turns, the target repeats the saving throw. It takes 3d6 fire damage on a failed save, and the spell ends on a successful one. These magical flames can\u2019t be extinguished through nonmagical means.\n\nIf damage from this spell reduces a target to 0 hit points, the target is turned to ash.",
+        "duration": "Concentration, up to 1 minute",
+        "level": "5",
+        "name": "Immolation",
+        "range": "90 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level5"
+        ],
+        "type": "5th-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "cleric",
+            "druid",
+            "sorcerer"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a few grains of sugar, some kernels of grain, and a smear of fat"
+            ],
+            "raw": "V, S, M (a few grains of sugar, some kernels of grain, and a smear of fat)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Swarming, biting locusts fill a 20-foot-radius sphere centered on a point you choose within range, The sphere spreads around corners. The sphere remains for the duration, and its area is lightly obscured. The sphere's area is difficult terrain.\n\nWhen the area appears, each creature in it must make a Constitution saving throw. A creature takes 4d10 piercing damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there.",
+        "duration": "Concentration, up to 10 minutes",
+        "higher_levels": "When you cast this spell using a spell slot of 6th levei or higher, the damage increases by 1d10 for each slot level above 5th.",
+        "level": "5",
+        "name": "Insect Plague",
+        "range": "300 feet",
+        "ritual": false,
+        "school": "conjuration",
+        "tags": [
+            "cleric",
+            "druid",
+            "sorcerer",
+            "level5"
+        ],
+        "type": "5th-level conjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes 8d8 necrotic damage on a failed save, or half as much damage on a successful one. The spell has no effect on undead or constructs.\n\nIf you target a plant creature or a magical plant, it makes the saving throw with disadvantage, and the spell deals maximum damage to it.\n\nIf you target a nonmagical plant that isn't a creature, such as a tree or shrub, it doesn't make a saving throw; it simply withers and dies.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 5th level of higher, the damage increases by 1d8 for each slot level above 4th.",
+        "level": "4",
+        "name": "Blight",
+        "range": "30 feet",
+        "ritual": false,
+        "school": "necromancy",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level4"
+        ],
+        "type": "4th-level necromancy"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "You teleport yourself from your current location to any other spot within range. You arrive at exactly the spot desired. It can be a place you can see, one you can visualise, or one you can describe by stating distance and direction, such as \"200 feet straight downward\" or \"upward to the northwest at a 45-degree angle, 300 feet.\"\n\nYou can bring along objects as long as their weight doesn't exceed what you can carry. You can also bring one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you cast this spell.\n\nIf you would arrive in a place already occupied by an object or a creature, you and any creature travelling with you each take 4d6 force damage, and the spell fails to teleport you.",
+        "duration": "Instantaneous",
+        "level": "4",
+        "name": "Dimension Door",
+        "range": "500 feet",
+        "ritual": false,
+        "school": "conjuration",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level4"
+        ],
+        "type": "4th-level conjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a caterpillar cocoon"
+            ],
+            "raw": "V, S, M (a caterpillar cocoon)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. A shapechanger automatically succeeds on this saving throw.\n\nThe transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast whose challenge rating is equal to or less than the target's (or the target's level, if it doesn\u2019t have a challenge rating). The target's game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality.\n\nThe target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form.\n\nAs long as the excess damage doesn't reduce the creature's normal form to 0 hit points, it isn't knocked unconscious.\n\nThe creature is limited in the actions it can perform by the nature of its new form, and it can't speak, cast spells, or take any other action that requires hands or speech.\n\nThe target's gear melds into the new form. The creature can't activate, use, wield, or otherwise benefit from any of its equipment.",
+        "duration": "Concentration, up to 1 hour",
+        "level": "4",
+        "name": "Polymorph",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "bard",
+            "druid",
+            "sorcerer",
+            "wizard",
+            "level4"
+        ],
+        "type": "4th-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a small piece of phosphorus"
+            ],
+            "raw": "V, S, M (a small piece of phosphorus)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.\n\nWhen the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes 5d8 fire damage, or half as much damage on a successful save.\n\nOne side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.",
+        "duration": "Concentration, up to 1 minute",
+        "higher_levels": "When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th.",
+        "level": "4",
+        "name": "Wall of Fire",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "wizard",
+            "level4"
+        ],
+        "type": "4th-level evocation"
+    },
+    {
+        "casting_time": "1 reaction, which you take when you see a creature within 60 feet of you casting a spell.",
+        "classes": [
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "S",
+            "somatic": true,
+            "verbal": false
+        },
+        "description": "You attempt to interrupt a creature in the process of casting a spell. If the creature is casting a spell of 3rd level or lower, its spell fails and has no effect. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell\u2019s level. On a success, the creature\u2019s spell fails and has no effect.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 4th level or higher, the interrupted spell has no effect if its level is less than or equal to the level of the spell slot you used.",
+        "level": "3",
+        "name": "Counterspell",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "abjuration",
+        "tags": [
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level3"
+        ],
+        "type": "3rd-level abjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "Roll a d20 at the end of each of your turns for the duration of the spell. On a roll of 11 or higher, you vanish from your current plane of existence and appear in the Ethereal Plane (the spell fails and the casting is wasted if you were already on that plane). At the start of your next turn, and when the spell ends if you are on the Ethereal Plane, you return to an unoccupied space of your choice that you can see within 10 feet of the space you vanished from. If no unoccupied space is available within that range, you appear in the nearest unoccupied space (chosen at random if more than one space is equally near). You can dismiss this spell as an action.\n\nWhile on the Ethereal Plane, you can see and hear the plane you originated from, which is cast in shades of gray, and you can\u2019t see anything there more than 60 feet away. You can only affect and be affected by other creatures on the Ethereal Plane. Creatures that aren\u2019t there can\u2019t perceive you or interact with you, unless they have the ability to do so.",
+        "duration": "1 minute",
+        "level": "3",
+        "name": "Blink",
+        "range": "Self",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level3"
+        ],
+        "type": "3rd-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a tiny ball of bat guano and sulfur"
+            ],
+            "raw": "V, S, M (a tiny ball of bat guano and sulfur)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.\n\nThe fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.",
+        "level": "3",
+        "name": "Fireball",
+        "range": "150 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level3"
+        ],
+        "type": "3rd-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a bit of fur and a rod of amber, crystal, or glass"
+            ],
+            "raw": "V, S, M (a bit of fur and a rod of amber, crystal, or glass)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A stroke of lightning forming a line 100 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must make a Dexterity saving throw. A creature takes 8d6 lightning damage on a failed save, or half as much damage on a successful one.\n\nThe lightning ignites flammable objects in the area that aren't being worn or carried.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.",
+        "level": "3",
+        "name": "Lightning Bolt",
+        "range": "Self (100-foot line)",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level3"
+        ],
+        "type": "3rd-level evocation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a wing feather from any bird"
+            ],
+            "raw": "V, S, M (a wing feather from any bird)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall.",
+        "duration": "Concentration, up to 10 minutes",
+        "higher_levels": "When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd.",
+        "level": "3",
+        "name": "Fly",
+        "range": "Touch",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level3"
+        ],
+        "type": "3rd-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "an eyelash encased in gum arabic"
+            ],
+            "raw": "V, S, M (an eyelash encased in gum arabic)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The spell ends for a target that attacks or casts a spell.",
+        "duration": "Concentration, up to 1 hour",
+        "higher_levels": "When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.",
+        "level": "2",
+        "name": "Invisibility",
+        "range": "Touch",
+        "ritual": false,
+        "school": "illusion",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level2"
+        ],
+        "type": "2nd-level illusion"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard",
+            "bard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "Choose an object that you can see within range. The object can be a door, a box, a chest, a set of manacles, a padlock, or another object that contains a mundane or magical means that prevents access.\n\nA target that is held shut by a mundane lock ar that is stuck or barred becomes unlocked, unstuck, or unbarred. If the object has multiple locks, only one of them is unlocked.\n\nIf you choose a target that is held shut with *[arcane lock](../arcane-lock/ \"arcane lock (lvl 2)\")*, that spell is suppressed for 10 minutes, during which time the target can be opened and shut normally.\n\nWhen you cast the spell, a loud knock, audible from as far away as 300 feet, emanates from the target object.",
+        "duration": "Instantaneous",
+        "level": "2",
+        "name": "Knock",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "bard",
+            "level2"
+        ],
+        "type": "2nd-level transmutation"
+    },
+    {
+        "casting_time": "1 bonus action",
+        "classes": [
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see.",
+        "duration": "Instantaneous",
+        "level": "2",
+        "name": "Misty Step",
+        "range": "Self",
+        "ritual": false,
+        "school": "conjuration",
+        "tags": [
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level2"
+        ],
+        "type": "2nd-level conjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a chip of mica"
+            ],
+            "raw": "V, S, M (a chip of mica)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a lO-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes 3d8 thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw.\n\nA nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 3rd levei or higher, the damage increases by ld8 for each slot level above 2nd.",
+        "level": "2",
+        "name": "Shatter",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "level2"
+        ],
+        "type": "2nd-level evocation"
+    },
+    {
+        "casting_time": "1 reaction, which you take when you or a creature within 60 feet of you falls",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a small feather or a piece of down"
+            ],
+            "raw": "V, M (a small feather or a piece of down)",
+            "somatic": false,
+            "verbal": true
+        },
+        "description": "Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If the creature lands before the spell ends, it takes no falling damage and can land on its feet, and the spell ends for that creature.",
+        "duration": "1 minute",
+        "level": "1",
+        "name": "Feather Fall",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "a piece of cured leather"
+            ],
+            "raw": "V, S, M (a piece of cured leather)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You touch a willing creature who isn\u2019t wearing armor, and a protective magical force surrounds it until the spell ends. The target\u2019s base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action.",
+        "duration": "8 hours",
+        "level": "1",
+        "name": "Mage Armor",
+        "range": "Touch",
+        "ritual": false,
+        "school": "abjuration",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level abjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.",
+        "level": "1",
+        "name": "Magic Missile",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level evocation"
+    },
+    {
+        "casting_time": "1 reaction, which you take when you are hit by an attack or targeted by the magic missile spell",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile.",
+        "duration": "1 round",
+        "level": "1",
+        "name": "Shield",
+        "range": "Self",
+        "ritual": false,
+        "school": "abjuration",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level abjuration"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "cleric",
+            "druid",
+            "paladin",
+            "ranger",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.\n\nThe spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.",
+        "duration": "Concentration, up to 10 minutes",
+        "level": "1",
+        "name": "Detect Magic",
+        "range": "Self",
+        "ritual": true,
+        "school": "divination",
+        "tags": [
+            "bard",
+            "cleric",
+            "druid",
+            "paladin",
+            "ranger",
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level divination (Ritual)"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "S",
+            "somatic": true,
+            "verbal": false
+        },
+        "description": "Choose one object weighing 1 to 5 pounds within range that isn\u2019t being worn or carried. The object flies in a straight line up to 90 feet in a direction you choose before falling to the ground, stopping early if it impacts against a solid surface. If the object would strike a creature, that creature must make a Dexterity saving throw. On a failed save, the object strikes the target and stops moving. In either case, both the object and the creature or solid surface take 3d8 bludgeoning damage.",
+        "duration": "Instantaneous",
+        "higher_levels": "When you cast this spell using a spell slot of 2nd level or higher, the maximum weight of objects that you can target with this spell increases by 5 pounds, and the damage increases by 1d8, for each slot level above 1st.",
+        "level": "1",
+        "name": "Catapult",
+        "range": "150 feet",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "level1"
+        ],
+        "type": "1st-level transmutation"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.\n\nIf you hit an undead target, it also has disadvantage on attack rolls against you until the end of your next turn.\n\nThis spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
+        "duration": "1 round",
+        "level": "cantrip",
+        "name": "Chill Touch",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "necromancy",
+        "tags": [
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Necromancy cantrip"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried. This spell\u2019s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).",
+        "duration": "Instantaneous",
+        "level": "cantrip",
+        "name": "Fire Bolt",
+        "range": "120 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Evocation cantrip"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "druid",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.\n\nThe spell\u2019s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+        "duration": "Instantaneous",
+        "level": "cantrip",
+        "name": "Frostbite",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "druid",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Evocation cantrip"
+    },
+    {
+        "casting_time": "1 minute",
+        "classes": [
+            "bard",
+            "cleric",
+            "druid",
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": true,
+            "materials_needed": [
+                "two lodestones"
+            ],
+            "raw": "V, S, M (two lodestones)",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "This spell repairs a single break or tear in an object you touch, such as a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no longer than 1 foot in any dimension, you mend it, leaving no trace of the former damage.\n\nThis spell can physically repair a magic item or construct, but the spell can\u2019t restore magic to such an object.",
+        "duration": "Instantaneous",
+        "level": "cantrip",
+        "name": "Mending",
+        "range": "Touch",
+        "ritual": false,
+        "school": "transmutation",
+        "tags": [
+            "bard",
+            "cleric",
+            "druid",
+            "sorcerer",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Transmutation cantrip"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "sorcerer",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "V, S",
+            "somatic": true,
+            "verbal": true
+        },
+        "description": "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.\n\nThe spell\u2019s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
+        "duration": "Instantaneous",
+        "level": "cantrip",
+        "name": "Ray of Frost",
+        "range": "60 feet",
+        "ritual": false,
+        "school": "evocation",
+        "tags": [
+            "sorcerer",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Evocation cantrip"
+    },
+    {
+        "casting_time": "1 action",
+        "classes": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard"
+        ],
+        "components": {
+            "material": false,
+            "raw": "S",
+            "somatic": true,
+            "verbal": false
+        },
+        "description": "You extend your hand and point a finger at a target in range. Your magic grants you a brief insight into the target's defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this spell hasn't ended.",
+        "duration": "Concentration, up to 1 round",
+        "level": "cantrip",
+        "name": "True Strike",
+        "range": "30 feet",
+        "ritual": false,
+        "school": "divination",
+        "tags": [
+            "bard",
+            "sorcerer",
+            "warlock",
+            "wizard",
+            "cantrip"
+        ],
+        "type": "Divination cantrip"
+    }
+]
