@@ -62,7 +62,7 @@
     },
     "concentration_icon": {
         "x": 85,
-        "y": 10,
+        "y": 1,
         "width": 8,
         "height": 8,
         "path": "icons/concentration.png"
@@ -75,19 +75,19 @@
     },
     "save_dc": {
         "x": 5,
-        "y": 35,
+        "y": 110,
         "font_size": 10,
         "color": "#000000"
     },
     "damage_dice": {
-        "x": 50,
+        "x": 5,
         "y": 35,
         "font_size": 10,
         "color": "#000000"
     },
     "description": {
         "x": 5,
-        "y": 40,
+        "y": 45,
         "font_size": 8,
         "color": "#000000"
     }

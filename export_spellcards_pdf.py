@@ -54,6 +54,7 @@ def hex_to_rgb(hex_color):
 def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     card_w = 63 * mm
     card_h = 88 * mm
+    has_concentration = False
 
     print("== Karte:", spell.get("name", "Unbenannt"), "==")
 
@@ -130,13 +131,14 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
         "casting_time": spell.get("casting_time", ""),
         "duration": spell.get("duration", ""),
         "range": f"Range: {spell.get('range', '')}",
-        "area_of_effect": spell.get("area_of_effect", ""),
-        "components": f"Components: {comps}",
-        "save_dc": f"Attack/Save: {save_dc}"
+        "components": f"Components: {comps}"
     }
 
     for key, text in text_elements.items():
         conf = config.get(key)
+        if "concentration" in text.lower():
+            has_concentration = True
+
         if conf:
             tx = px(conf)
             ty = py(conf)
@@ -148,14 +150,16 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
                 textColor=fc(conf)
             )
             para = Paragraph(text, style)
+            w, h = para.wrap(max_width, 100)
             para.wrapOn(c, max_width, 100)
-            para.drawOn(c, tx, ty - fs(conf))
+            print(f"y-Pos final ({key}): {ty- h}= {ty} - {h}")
+            para.drawOn(c, tx, ty - h)
 
     # Desc
     desc = spell.get("description", "")
     desc_conf = config.get("description")
     if desc_conf:
-        max_length = 400
+        max_length = 800
         if (len(desc) > max_length):
             desc = desc[:(max_length - 3)] + "..."
         tx = px(desc_conf)
@@ -183,12 +187,14 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
         tx = px(conf)
         ty = py(conf)
         font_size = fs(conf)
-        icon_size = font_size + 4
-        spacing = 2 * mm
+        icon_size = font_size + 2
+        spacing = 1 * mm
+        font_size = font_size - 1
+        correctionY = 10  # 21
 
         c.setFont(FONT_NAME, font_size)
         c.setFillColor(fc(conf))
-        c.drawString(tx, ty, "Damage:")
+        c.drawString(tx, ty - correctionY, "Damage:")
 
         # Position nach dem "Damage:" Label
         label_width = c.stringWidth("Damage:", FONT_NAME, font_size)
@@ -200,8 +206,8 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
             # Schadenswürfel + Icon
             dmg_info = dmg_dicex[i]
             parts = dmg_info.split()
-            iyX = iy - i * 15
-            tyX = ty - i* 15
+            iyX = iy - i * 10 - correctionY
+            tyX = ty - i * 10 - correctionY
             if len(parts) >= 2:
                 print("Parts von damage_dice korrekt gefunden?", len(parts), parts[0], parts[1])
                 dice, dmg_type = parts[0], parts[1].lower()
@@ -218,17 +224,24 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
                         print(f"Icon {dmg_type} → Pos: ({tx}, {ty}) / Path: {icon_path}")
                         drawing.scale(scale, scale)
                         print("y-pos-correction: ", iy, iyX)
-                        renderPDF.draw(drawing, c, ix, iyX )
                         icon_width = drawing.width * scale
+                        print("finale y-Pos icon: ", iyX)
+                        renderPDF.draw(drawing, c, ix, iyX)
                     else:
                         print("SVG konnte nicht geladen werden.")
                         # Fallback: Kürzel als Text
-                        c.drawString(ix, tyX, f"[{dmg_type.lower()}]")
                         icon_width = c.stringWidth(f"[{dmg_type.upper()}]", FONT_NAME, font_size)
+                        w, h = para.wrap(icon_width, 100)
+                        print("finale y-Pos Text, h: ", iyX, h)
+                        c.drawString(ix, tyX - h, f"[{dmg_type.lower()}]")
                 else:
                     print("SVG-Pfad fehlt:", icon_path)
-                    c.drawString(ix, tyX, f"[{dmg_type.lower()}]")
-                    icon_width = c.stringWidth(f"[{dmg_type.upper()}]", FONT_NAME, font_size)
+                    if dmg_type.lower() == "when":
+                        c.drawString(ix, tyX, "[incr.w.lvl.]")
+                        icon_width = c.stringWidth("[incr.w.lvl.]", FONT_NAME, font_size)
+                    else:
+                        c.drawString(ix, tyX, f"[{dmg_type.lower()}]")
+                        icon_width = c.stringWidth(f"[{dmg_type.upper()}]", FONT_NAME, font_size)
                 # Schadenswürfel-Zahl
                 c.drawString(ix + icon_width + spacing, tyX, dice)
             else:
@@ -236,22 +249,45 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     else:
         print("Keine Schadenswürfel")
 
-    # Schule + Konzentration Icons als Platzhalter-Rechtecke
-    icon_elements = {
-        "school_icon": "#8888ff",
-        "concentration_icon": "#ff8888"
-    }
+    #Konzentration Icons
+    conf = config.get("concentration_icon")
+    if conf and has_concentration:
+        icon_path = "src/img/concentration.svg"
+        ix = px(conf)
+        iy = py(conf) -21
+        iw = fw(conf, "width")
+        ih = fw(conf, "height")
+        if os.path.exists(icon_path):
+            drawing = svg2rlg(icon_path)
+            if drawing:
+                scale = min(iw / drawing.width, ih / drawing.height)
+                drawing.scale(scale, scale)
+                print(f"CON-icon: {ix},{iy} scale: {scale}, h:{ih}, w:{iw}")
+                renderPDF.draw(drawing, c, ix, iy -ih)
+            else:
+                print("SVG konnte nicht geladen werden:", icon_path)
+        else:
+            print("Konzentrations-Icon nicht gefunden:", icon_path)
 
-    for key, color in icon_elements.items():
-        conf = config.get(key)
-        if conf:
-            ix = px(conf)
-            iy = py(conf)
-            iw = fw(conf, "width")
-            ih = fw(conf, "height")
-            print(f"Icon {key} → Pos: ({conf.get('x')}, {conf.get('y')}) / Path: {conf.get('path', 'n/a')}")
-            c.setFillColor(HexColor(color))
-            c.rect(ix, iy, iw, ih, fill=1)
+    #Schul-Symbol andrucken
+    school_name = spell.get("school", "").lower()
+    conf = config.get("school_icon")
+    if conf and school_name:
+        icon_path = f"src/img/school/{school_name}.png"
+        ix = px(conf)
+        iy = py(conf)
+        iyX = iy + 15
+        iw = fw(conf, "width")
+        ih = fw(conf, "height")
+        if os.path.exists(icon_path):
+            try:
+                c.drawImage(icon_path, ix, iyX, width=iw, height=ih, preserveAspectRatio=True, mask='auto')
+            except Exception as e:
+                print(f"Fehler beim Zeichnen von {icon_path}: {e}")
+        else:
+            print("Schul-Icon nicht gefunden:", icon_path)
+    else:
+        print("keine Schule?")
 
 
 def render_backside_image(c, x, y, path):
