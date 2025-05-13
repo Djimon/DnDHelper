@@ -25,7 +25,7 @@ def main():
 
     # Schritt 3: Export
     tab3 = ttk.Frame(notebook)
-    spell_exporter = SpellExporter(tab3, spell_manager.collection, spell_designer.config_data)
+    spell_exporter = SpellExporter(tab3, spell_manager.collection, spell_designer)
     notebook.add(tab3, text="3. Export")
 
     root.mainloop()

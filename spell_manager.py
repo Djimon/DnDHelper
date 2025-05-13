@@ -312,7 +312,7 @@ class SpellManager:
     def show_spell_details(self, spell):
         # 1. Visuelle Markierung zurücksetzen
         for label in self.label_refs.values():
-            label.config(bg=self.root.cget("bg"))
+            label.config(bg=None)
 
         # 2. Selektiertes Spell-Label hervorheben
         spell_key = spell["name"].lower()
@@ -321,7 +321,7 @@ class SpellManager:
             selected_label.config(bg="#d0ebff")  # zartes Blau
 
             # 3. Scroll dahin
-            self.scroll_to_widget(selected_label)
+            #self.scroll_to_widget(selected_label)
 
         self.spell_detail.config(state="normal")
         self.spell_detail.delete("1.0", tk.END)

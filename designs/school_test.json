@@ -5,26 +5,25 @@
     },
     "frame": {
         "mode": "school",
-        "color": "#000000",
         "thickness": 4,
         "roundness": 10
     },
     "school_icon": {
         "x": 85,
-        "y": 85,
+        "y": 95,
         "width": 10,
         "height": 10,
         "opacity": 25,
         "path": "icons/school.png"
     },
     "spell_name": {
-        "x": 10,
-        "y": 3,
+        "x": 5,
+        "y": 1,
         "font_size": 16,
         "color": "#0000ff"
     },
     "spell_level": {
-        "x": 10,
+        "x": 5,
         "y": 10,
         "font_size": 10,
         "color": "#000000"
@@ -37,20 +36,20 @@
         "max_width": 45
     },
     "duration": {
-        "x": 10,
+        "x": 5,
         "y": 15,
         "font_size": 10,
         "color": "#000000"
     },
     "range": {
-        "x": 10,
+        "x": 5,
         "y": 20,
         "font_size": 10,
         "color": "#000000"
     },
     "area_of_effect": {
-        "x": 10,
-        "y": 25,
+        "x": 5,
+        "y": 105,
         "font_size": 10,
         "color": "#000000"
     },
@@ -63,33 +62,33 @@
     },
     "concentration_icon": {
         "x": 85,
-        "y": 5,
+        "y": 10,
         "width": 8,
         "height": 8,
         "path": "icons/concentration.png"
     },
     "components": {
-        "x": 10,
-        "y": 35,
+        "x": 5,
+        "y": 25,
         "font_size": 10,
         "color": "#000000"
     },
     "save_dc": {
-        "x": 10,
-        "y": 45,
+        "x": 5,
+        "y": 35,
         "font_size": 10,
         "color": "#000000"
     },
     "damage_dice": {
         "x": 50,
-        "y": 45,
+        "y": 35,
         "font_size": 10,
         "color": "#000000"
     },
     "description": {
-        "x": 10,
-        "y": 52,
-        "font_size": 9,
+        "x": 5,
+        "y": 40,
+        "font_size": 8,
         "color": "#000000"
     }
 }

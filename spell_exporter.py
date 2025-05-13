@@ -3,11 +3,11 @@ import os
 from export_spellcards_pdf import export_spellcards_pdf
 
 class SpellExporter:
-    def __init__(self, parent, collection,design):
+    def __init__(self, parent, collection, designer_ref):
         self.frame = ttk.Frame(parent)
         self.frame.pack(fill="both", expand=True)
         self.collection = collection
-        self.design_config = design
+        self.designer = designer_ref
 
         ttk.Label(self.frame, text="PDF-Export von Zauberkarten", font=("Arial", 12, "bold")).pack(pady=10)
 
@@ -58,7 +58,7 @@ class SpellExporter:
         try:
             export_spellcards_pdf(
                 spells=self.collection,
-                design_config=self.design_config,
+                design_config=self.designer.config_data,
                 output_dir="output",
                 backside_option=self.backside_option.get(),
                 backside_path=self.custom_backside_path
