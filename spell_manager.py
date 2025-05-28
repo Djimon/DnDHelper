@@ -16,10 +16,20 @@ class SpellManager:
         # UI-Layout
         self.setup_ui()
 
+        #Custom Spells
+        self.custom_spells = []  # Eigene Zauber aus custom_spells.json
+
         # Versuche Standardliste zu laden
         default_path = pathlib.Path("src/spells.json")
         if default_path.exists():
             self.load_spells_from_path(default_path)
+
+        custom_path = pathlib.Path("src/custom_spells.json")
+        if custom_path.exists():
+            with open(custom_path, "r", encoding="utf-8") as f:
+                self.custom_spells = json.load(f)
+                self.all_spells.extend(self.custom_spells)
+                self.set_status(f"{len(self.custom_spells)} eigene Zauber geladen.")
 
     def load_spells_from_path(self, path):
         with open(path, "r", encoding="utf-8") as f:
@@ -140,6 +150,9 @@ class SpellManager:
         # Suchfeld über der Detailansicht
         search_frame = ttk.Frame(self.detail_frame)
         search_frame.pack(anchor="nw", pady=(0, 5))
+
+        #Button für eigene Zauber
+        ttk.Button(search_frame, text="Neuer Zauber", command=self.new_spell_dialog).pack(side="left", padx=5)
 
         ttk.Label(search_frame, text="Suchen:").pack(side="left")
         self.search_var = tk.StringVar()
@@ -372,6 +385,223 @@ class SpellManager:
         with open(filepath, "r", encoding="utf-8") as f:
             self.collection = json.load(f)
         self.set_status(f"{len(self.collection)} Zauber in Sammlung geladen.")
+
+    def new_spell_dialog(self):
+        dialog = tk.Toplevel(self.root)
+        dialog.title("Zauber erstellen")
+
+        ttk.Label(dialog, text="Wie möchtest du den Zauber erstellen?").pack(pady=10)
+
+        ttk.Button(dialog, text="Aus Vorlage", command=lambda: [dialog.destroy(), self.select_spell_template()]).pack(
+            pady=5)
+        ttk.Button(dialog, text="Neu", command=lambda: [dialog.destroy(), self.open_spell_editor({})]).pack(pady=5)
+
+    def select_spell_template(self):
+        selector = tk.Toplevel(self.root)
+        selector.title("Vorlage auswählen")
+
+        ttk.Label(selector, text="Wähle einen bestehenden Zauber:").pack(pady=5)
+
+        spell_names = [s["name"] for s in self.all_spells]
+        selected_spell = tk.StringVar(value=spell_names[0] if spell_names else "")
+
+        dropdown = ttk.Combobox(selector, values=spell_names, textvariable=selected_spell, state="readonly", width=40)
+        dropdown.pack(pady=5)
+
+        def confirm():
+            name = selected_spell.get()
+            spell = next((s for s in self.all_spells if s["name"] == name), None)
+            if spell:
+                self.open_spell_editor(spell)
+            selector.destroy()
+
+        ttk.Button(selector, text="Weiter", command=confirm).pack(pady=5)
+
+    def open_spell_editor(self, spell_data):
+        editor = tk.Toplevel(self.root)
+        editor.title("Zauber bearbeiten")
+
+        entries = {}
+
+        # --- Name ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Name:").pack(side="left", padx=(0, 10))
+        name_entry = ttk.Entry(frame)
+        name_entry.insert(0, spell_data.get("name", ""))
+        name_entry.pack(fill="x", expand=True)
+        entries["name"] = name_entry
+
+        # --- Level (Dropdown) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Level:").pack(side="left", padx=(0, 10))
+        levels = ["Cantrip"] + [str(i) for i in range(1, 10)]
+        level_var = tk.StringVar(value=str(spell_data.get("level", "Cantrip")))
+        ttk.OptionMenu(frame, level_var, level_var.get(), *levels).pack(fill="x")
+        entries["level"] = level_var
+
+        # --- Schule (Dropdown) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Schule:").pack(side="left", padx=(0, 10))
+        school_options = sorted({s.get("school", "") for s in self.all_spells if s.get("school")})
+        school_var = tk.StringVar(value=spell_data.get("school", ""))
+        ttk.OptionMenu(frame, school_var, school_var.get(), *school_options).pack(fill="x")
+        entries["school"] = school_var
+
+        # --- Klassen (Checkboxen) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Klassen:").pack(anchor="w")
+        all_classes = sorted({cls for s in self.all_spells for cls in s.get("classes", [])})
+        selected_classes = set(spell_data.get("classes", []))
+        class_vars = {}
+        for cls in all_classes:
+            var = tk.BooleanVar(value=cls in selected_classes)
+            chk = ttk.Checkbutton(frame, text=cls, variable=var)
+            chk.pack(side="left", padx=2)
+            class_vars[cls] = var
+        entries["classes"] = class_vars
+
+        # --- Wirkzeit (Dropdown) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Wirkzeit:").pack(side="left", padx=(0, 10))
+        casting_options = ["1 Action", "1 Bonus Action", "1 Reaction", "Ritual", "Other"]
+        cast_var = tk.StringVar(value=spell_data.get("casting_time", ""))
+        ttk.OptionMenu(frame, cast_var, cast_var.get(), *casting_options).pack(fill="x")
+        entries["casting_time"] = cast_var
+
+        # --- Reichweite (Entry) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Reichweite:").pack(side="left", padx=(0, 10))
+        range_entry = ttk.Entry(frame)
+        range_entry.insert(0, spell_data.get("range", ""))
+        range_entry.pack(fill="x", expand=True)
+        entries["range"] = range_entry
+
+        # --- Dauer (Dropdown) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Dauer:").pack(side="left", padx=(0, 10))
+        duration_options = ["Instantaneous", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24 Hours",
+                            "Until Dispelled", "Special"]
+        duration_var = tk.StringVar(value=spell_data.get("duration", ""))
+        ttk.OptionMenu(frame, duration_var, duration_var.get(), *duration_options).pack(fill="x")
+        entries["duration"] = duration_var
+
+        # --- Ritual (Checkbox) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Ritual:").pack(side="left", padx=(0, 10))
+        ritual_var = tk.BooleanVar(value=spell_data.get("ritual", False))
+        ttk.Checkbutton(frame, variable=ritual_var).pack(side="left")
+        entries["ritual"] = ritual_var
+
+        # --- Beschreibung (Text) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Beschreibung:").pack(anchor="w")
+        description = tk.Text(frame, height=6, wrap="word")
+        description.insert("1.0", spell_data.get("description", ""))
+        description.pack(fill="x", expand=True)
+        entries["description"] = description
+
+        # --- Wirkungsbereich (Entry) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Wirkungsbereich:").pack(side="left", padx=(0, 10))
+        aoe_entry = ttk.Entry(frame)
+        aoe_entry.insert(0, spell_data.get("AreaOfEffect", ""))
+        aoe_entry.pack(fill="x", expand=True)
+        entries["AreaOfEffect"] = aoe_entry
+
+        # --- Attack/Save (Dropdown) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Attack/Save:").pack(side="left", padx=(0, 10))
+        save_options = ["None", "STR Save", "DEX Save", "CON Save", "INT Save", "WIS Save", "CHA Save", "Spell Attack"]
+        save_var = tk.StringVar(value=spell_data.get("AttackSave", "None"))
+        ttk.OptionMenu(frame, save_var, save_var.get(), *save_options).pack(fill="x")
+        entries["AttackSave"] = save_var
+
+        # --- Schadenswürfel (mehrzeilig) ---
+        damage_types = ["Acid", "Bludgeoning", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Piercing", "Poison",
+                        "Psychic", "Radiant", "Slashing", "Thunder"]
+
+        dmg_frame = ttk.Frame(editor)
+        dmg_frame.pack(fill="x", pady=5)
+        ttk.Label(dmg_frame, text="Schadenswürfel:").pack(anchor="w")
+
+        dmg_rows_frame = ttk.Frame(dmg_frame)
+        dmg_rows_frame.pack(fill="x")
+        dmg_entries = []
+
+        def add_damage_row(data=None):
+            row = ttk.Frame(dmg_rows_frame)
+            row.pack(fill="x", pady=1)
+
+            dice_entry = ttk.Entry(row, width=10)
+            dice_entry.insert(0, data["dice"] if data else "")
+            dice_entry.pack(side="left", padx=(0, 5))
+
+            dmg_type = tk.StringVar(value=data["type"] if data else damage_types[0])
+            ttk.OptionMenu(row, dmg_type, dmg_type.get(), *damage_types).pack(side="left")
+
+            dmg_entries.append((dice_entry, dmg_type))
+
+        # Zeilen laden
+        for dmg in spell_data.get("DmgDice", []):
+            add_damage_row(dmg)
+        if not spell_data.get("DmgDice"):
+            add_damage_row()
+
+        # + Button unterhalb der Zeilen
+        ttk.Button(dmg_frame, text="+ add Dice", command=add_damage_row).pack(pady=(5, 0), anchor="w")
+
+        entries["DmgDice"] = dmg_entries
+
+        # --- Speichern ---
+        def save_spell():
+            new_spell = {
+                "name": entries["name"].get().strip(),
+                "level": 0 if entries["level"].get() == "Cantrip" else int(entries["level"].get()),
+                "school": entries["school"].get().strip(),
+                "classes": [cls for cls, var in entries["classes"].items() if var.get()],
+                "casting_time": entries["casting_time"].get().strip(),
+                "range": entries["range"].get().strip(),
+                "duration": entries["duration"].get().strip(),
+                "ritual": entries["ritual"].get(),
+                "description": entries["description"].get("1.0", "end").strip(),
+                "AreaOfEffect": entries["AreaOfEffect"].get().strip(),
+                "AttackSave": entries["AttackSave"].get().strip(),
+                "DmgDice": [
+                    {"dice": dice_entry.get().strip(), "type": type_var.get().strip()}
+                    for dice_entry, type_var in entries["DmgDice"]
+                    if dice_entry.get().strip()
+                ]
+            }
+
+            self.custom_spells = [s for s in self.custom_spells if s.get("name") != new_spell["name"]]
+            self.custom_spells.append(new_spell)
+            self.save_custom_spells()
+
+            self.all_spells.append(new_spell)
+            self.filtered_spells = self.all_spells
+            self.update_spell_list()
+            self.update_dynamic_filters()
+            editor.destroy()
+            self.set_status(f"Neuer Custom-Zauber '{new_spell.get('name')}' hinzugefügt.")
+
+        ttk.Button(editor, text="Speichern", command=save_spell).pack(pady=10)
+
+    def save_custom_spells(self):
+        custom_path = pathlib.Path("src/custom_spells.json")
+        with open(custom_path, "w", encoding="utf-8") as f:
+            json.dump(self.custom_spells, f, indent=4, ensure_ascii=False)
+        self.set_status("Custom-Zauber gespeichert.")
 
 
 if __name__ == "__main__":
