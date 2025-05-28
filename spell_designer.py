@@ -101,7 +101,8 @@ class SpellDesigner:
         spacing = 40
 
         for i, spell in enumerate(self.preview_spells):
-            card_canvas = tk.Canvas(self.canvas_inner, width=card_width+20, height=500, bg="white")
+            spell = normalize_spell_data(spell)
+            card_canvas = tk.Canvas(self.canvas_inner, width=card_width + 20, height=500, bg="white")
             card_canvas.pack(side="left", padx=(0 if i == 0 else spacing), pady=10)
             draw_card_preview(card_canvas, self.config_data, spell)
 
@@ -296,3 +297,15 @@ def draw_rounded_rect(canvas, x0, y0, x1, y1, r, outline, width):
     canvas.create_line(x0 + r, y1, x1 - r, y1, fill=outline, width=width)
     canvas.create_line(x0, y0 + r, x0, y1 - r, fill=outline, width=width)
     canvas.create_line(x1, y0 + r, x1, y1 - r, fill=outline, width=width)
+
+def normalize_spell_data(spell):
+    # Setze neue Felder, falls nicht vorhanden
+    spell.setdefault("AreaOfEffect", "")
+    spell.setdefault("AttackSave", "")
+    spell.setdefault("DmgDice", [])
+
+    # Legacy-Fix: level immer int oder "cantrip"
+    if isinstance(spell.get("level", ""), str) and spell["level"].isdigit():
+        spell["level"] = int(spell["level"])
+
+    return spell

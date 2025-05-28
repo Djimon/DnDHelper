@@ -118,38 +118,56 @@ def draw_text_elements(canvas, config_data, spell_data, x0, y0, w, h):
             )
 
 def draw_damage(canvas, config_data, spell_data, x0, y0, w, h):
-    damage_info = spell_data.get("damage_dice", "")
-    if damage_info:
-        parts = damage_info.split()
-        if len(parts) >= 2:
-            dice = parts[0]
-            dmg_type = parts[1].lower()
-            conf = config_data.get("damage_dice", {})
-            ix = px(conf, x0, w)
-            iy = py(conf, y0, h)
-            font_size = fs(conf)
-            icon_size = font_size + 4
-            spacing = 5
+    conf = config_data.get("damage_dice", {})
+    ix = px(conf, x0, w)
+    iy = py(conf, y0, h)
+    font_size = fs(conf)
+    icon_size = font_size + 4
+    spacing = 5
+    current_y = iy
 
-            canvas.create_text(
-                ix, iy,
-                text="Damage:",
-                anchor="nw",
-                fill=fc(conf),
-                font=("Arial", font_size)
-            )
+    # Quelle vorbereiten
+    dmg_entries = []
 
-            damage_label_width = canvas.bbox(canvas.create_text(0, 0, text="Damage: ", font=("Arial", font_size)))[2]
-            icon_x = ix + damage_label_width + spacing + 20
+    if isinstance(spell_data.get("DmgDice"), list) and spell_data["DmgDice"]:
+        dmg_entries = [
+            {"dice": entry.get("dice", ""), "type": entry.get("type", "").capitalize()}
+            for entry in spell_data["DmgDice"]
+        ]
+    else:
+        # Fallback auf damage_dice-Textfeld
+        damage_info = spell_data.get("damage_dice", "")
+        if damage_info:
+            parts = damage_info.split()
+            if len(parts) >= 2:
+                dmg_entries = [{"dice": parts[0], "type": parts[1].capitalize()}]
 
-            canvas.create_oval(icon_x, iy, icon_x + icon_size, iy + icon_size, fill="#faa", outline="#600")
-            canvas.create_text(
-                icon_x + icon_size + spacing, iy,
-                text=dice,
-                anchor="nw",
-                fill=fc(conf),
-                font=("Arial", font_size)
-            )
+    if not dmg_entries:
+        return  # Keine Anzeige nötig
+
+    # Gemeinsames Rendering
+    canvas.create_text(
+        ix, current_y,
+        text="Damage:",
+        anchor="nw",
+        fill=fc(conf),
+        font=("Arial", font_size)
+    )
+    current_y += font_size + 4
+
+    for entry in dmg_entries:
+        dice = entry["dice"]
+        dmg_type = entry["type"]
+
+        canvas.create_oval(ix, current_y, ix + icon_size, current_y + icon_size, fill="#faa", outline="#600")
+        canvas.create_text(
+            ix + icon_size + spacing, current_y,
+            text=f"{dice} {dmg_type}",
+            anchor="nw",
+            fill=fc(conf),
+            font=("Arial", font_size)
+        )
+        current_y += icon_size + spacing
 
 def hex_with_alpha(hex_color, alpha_percent):
     """Erzeugt eine RGBA-Farbe für Canvas (nur für Fake-Farben)"""
