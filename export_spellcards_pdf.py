@@ -312,9 +312,8 @@ def render_backside_image(c, x, y, path):
     except Exception as e:
         print("Fehler beim Laden der Rückseite:", e)
 
-def export_spellcards_pdf(spells, design_config, output_dir="output", backside_option="none", backside_path=None):
+def export_spellcards_pdf(spells, design_config, output_dir="output", backside_option="none", backside_path=None, base_name="MyCollection"):
     os.makedirs(output_dir, exist_ok=True)
-    base_name = "MyCollection"
     output_path = os.path.join(output_dir, f"DNDZauber_{base_name}.pdf")
 
     c = canvas.Canvas(output_path, pagesize=A4)

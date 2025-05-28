@@ -7,6 +7,7 @@ class SpellExporter:
         self.frame = ttk.Frame(parent)
         self.frame.pack(fill="both", expand=True)
         self.collection = collection
+        self.collection_name = 'MyCollection'
         self.designer = designer_ref
 
         ttk.Label(self.frame, text="PDF-Export von Zauberkarten", font=("Arial", 12, "bold")).pack(pady=10)
@@ -36,6 +37,7 @@ class SpellExporter:
         path = filedialog.askopenfilename(filetypes=[("JSON Dateien", "*.json")])
         if path:
             self.collection_path = path
+            self.collection_name = os.path.splitext(os.path.basename(path))[0]
             try:
                 import json
                 with open(path, "r", encoding="utf-8") as f:
@@ -61,7 +63,8 @@ class SpellExporter:
                 design_config=self.designer.config_data,
                 output_dir="output",
                 backside_option=self.backside_option.get(),
-                backside_path=self.custom_backside_path
+                backside_path=self.custom_backside_path,
+                base_name=self.collection_name
             )
             self.status_label.config(text="Export abgeschlossen.")
         except Exception as e:
