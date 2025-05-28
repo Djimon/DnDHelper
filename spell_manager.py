@@ -19,42 +19,41 @@ class SpellManager:
         #Custom Spells
         self.custom_spells = []  # Eigene Zauber aus custom_spells.json
 
-        # Versuche Standardliste zu laden
-        default_path = pathlib.Path("src/spells.json")
-        if default_path.exists():
-            self.load_spells_from_path(default_path)
-
+        # Custom spells laden
         custom_path = pathlib.Path("src/custom_spells.json")
         if custom_path.exists():
             with open(custom_path, "r", encoding="utf-8") as f:
                 self.custom_spells = json.load(f)
                 self.all_spells.extend(self.custom_spells)
                 self.set_status(f"{len(self.custom_spells)} eigene Zauber geladen.")
+            for spell in self.custom_spells:
+                spell.setdefault("source", "Homebrew")
+
+        # Versuche Standardliste zu laden
+        default_path = pathlib.Path("src/spells.json")
+        if default_path.exists():
+            self.load_spells_from_path(default_path)
 
     def load_spells_from_path(self, path):
         with open(path, "r", encoding="utf-8") as f:
-            self.all_spells = sorted(
-                json.load(f),
-                key=lambda s: s.get("name", "").lower()
-            )
-        self.set_status(f"{len(self.all_spells)} Zauber geladen.")
+            core_spells = json.load(f)
+            for spell in core_spells:
+                spell.setdefault("source", "Core")
 
+        # Kombiniere core + custom spells
+        combined_spells = core_spells + self.custom_spells
+
+        # Duplikate vermeiden (nach Name+Source)
+        unique = {}
+        for spell in combined_spells:
+            key = (spell.get("name", "").lower(), spell.get("source", "Core").lower())
+            unique[key] = spell
+
+        self.all_spells = sorted(unique.values(), key=lambda s: s.get("name", "").lower())
         self.filtered_spells = self.all_spells
 
+        self.set_status(f"{len(self.all_spells)} Zauber geladen.")
         self.update_spell_list()
-
-        # Unique Werte extrahieren
-        all_classes = set()
-        all_schools = set()
-        all_levels = set()
-
-        for spell in self.all_spells:
-            for cls in spell.get("classes", []):
-                all_classes.add(cls.lower())
-            all_schools.add(spell.get("school", "").lower())
-            lvl = spell.get("level", "")
-            all_levels.add(str(lvl).lower())
-
         self.update_dynamic_filters()
 
 
@@ -199,7 +198,9 @@ class SpellManager:
         if not spell:
             return
 
-        var = self.checkbox_vars.get(spell["name"].lower(), (None,))[0]
+        key = (spell["name"].lower(), spell.get("source", "Core").lower())
+        #var = self.checkbox_vars.get(spell["name"].lower(), (None,))[0] # OLD
+        var = self.checkbox_vars.get(key, (None,))[0]
         if not var:
             return
 
@@ -298,12 +299,16 @@ class SpellManager:
             cb = tk.Checkbutton(row, variable=var, command=lambda s=spell, v=var: self.toggle_collection(s, v))
             cb.grid(row=0, column=0, sticky="w")
 
-            label = tk.Label(row, text=spell.get("name", "Unbenannt"), fg="blue", cursor="hand2", anchor="w")
+            source = spell.get("source", "Core")
+            label_text = f"{spell.get('name', 'Unbenannt')} ({source})"
+
+            label = tk.Label(row, text=label_text, fg="blue", cursor="hand2", anchor="w")
             label.grid(row=0, column=1, sticky="w", padx=(5, 0))
             label.bind("<Button-1>", lambda e, s=spell: self.show_spell_details(s))
-
-            self.checkbox_vars[spell["name"].lower()] = (var, spell)
-            self.label_refs[spell["name"].lower()] = label
+            # allow same spells from different sources
+            key = (spell.get("name", "").lower(), spell.get("source", "Core").lower())
+            self.checkbox_vars[key] = (var, spell)
+            self.label_refs[key] = label
 
     def scroll_to_widget(self, widget):
         self.spell_canvas.update_idletasks()
@@ -339,7 +344,8 @@ class SpellManager:
         self.spell_detail.config(state="normal")
         self.spell_detail.delete("1.0", tk.END)
 
-        text = f"Name: {spell.get('name')}\n"
+        text = f"Quelle: {spell.get('source', '-')}\n"
+        text += f"Name: {spell.get('name')}\n"
         text += f"Level: {spell.get('level')}\n"
         text += f"Schule: {spell.get('school')}\n"
         text += f"Klassen: {', '.join(spell.get('classes', []))}\n"
@@ -348,6 +354,20 @@ class SpellManager:
         text += f"Dauer: {spell.get('duration')}\n"
         text += f"Ritual: {'Ja' if spell.get('ritual') else 'Nein'}\n"
         text += f"\nBeschreibung:\n{spell.get('description')}\n"
+
+        # Zusätzliche Felder (falls vorhanden)
+        if spell.get("AreaOfEffect"):
+            text += f"\nWirkungsbereich: {spell['AreaOfEffect']}\n"
+
+        if spell.get("AttackSave") and spell["AttackSave"].lower() != "none":
+            text += f"Angriff/Wurf: {spell['AttackSave']}\n"
+
+        if spell.get("DmgDice"):
+            text += "Schaden:\n"
+            for entry in spell["DmgDice"]:
+                dice = entry.get("dice", "")
+                dtype = entry.get("type", "").capitalize()
+                text += f"  {dice} {dtype}\n"
 
         self.spell_detail.insert("1.0", text)
         self.spell_detail.config(state="disabled")
@@ -422,6 +442,15 @@ class SpellManager:
         editor.title("Zauber bearbeiten")
 
         entries = {}
+
+        # --- Quelle (Entry, Standard: Homebrew) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Quelle:").pack(side="left", padx=(0, 10))
+        source_entry = ttk.Entry(frame)
+        source_entry.insert(0, spell_data.get("source", "Homebrew"))
+        source_entry.pack(fill="x", expand=True)
+        entries["source"] = source_entry
 
         # --- Name ---
         frame = ttk.Frame(editor)
@@ -566,6 +595,7 @@ class SpellManager:
         # --- Speichern ---
         def save_spell():
             new_spell = {
+                "source": entries["source"].get().strip(),
                 "name": entries["name"].get().strip(),
                 "level": 0 if entries["level"].get() == "Cantrip" else int(entries["level"].get()),
                 "school": entries["school"].get().strip(),
