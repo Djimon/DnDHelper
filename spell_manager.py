@@ -493,6 +493,19 @@ class SpellManager:
             class_vars[cls] = var
         entries["classes"] = class_vars
 
+        # --- Komponenten (Checkboxen) ---
+        frame = ttk.Frame(editor)
+        frame.pack(fill="x", pady=2)
+        ttk.Label(frame, text="Komponenten:").pack(anchor="w")
+        comp_data = spell_data.get("components", {})
+        comp_vars = {}
+        for comp in ["verbal", "somatic", "material"]:
+            var = tk.BooleanVar(value=comp_data.get(comp, False))
+            chk = ttk.Checkbutton(frame, text=comp.capitalize(), variable=var)
+            chk.pack(side="left", padx=2)
+            comp_vars[comp] = var
+        entries["components"] = comp_vars
+
         # --- Wirkzeit (Dropdown) ---
         frame = ttk.Frame(editor)
         frame.pack(fill="x", pady=2)
@@ -600,6 +613,7 @@ class SpellManager:
                 "level": 0 if entries["level"].get() == "Cantrip" else int(entries["level"].get()),
                 "school": entries["school"].get().strip(),
                 "classes": [cls for cls, var in entries["classes"].items() if var.get()],
+                "components": {k: v.get() for k, v in entries["components"].items()},
                 "casting_time": entries["casting_time"].get().strip(),
                 "range": entries["range"].get().strip(),
                 "duration": entries["duration"].get().strip(),

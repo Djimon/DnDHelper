@@ -112,10 +112,19 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     c.setLineWidth(0) #zurücksetzen für andere icons
 
     # Beschriftungen
-    # Komponenten nur als raw
+    # Komponenten aus Booleans ermitteln
     comps = spell.get("components", "")
     if isinstance(comps, dict):
-        comps = comps.get("raw", comps)
+        flags = []
+        if comps.get("verbal"): flags.append("V")
+        if comps.get("somatic"): flags.append("S")
+        if comps.get("material"): flags.append("M")
+        comps = ", ".join(flags)
+    elif isinstance(comps, str):
+        # fallback falls doch ein String drin steht
+        comps = comps.strip()
+    else:
+        comps = ""
 
     # Save-DC als Kürzel
     save_dc = spell.get("save_dc", "")
