@@ -136,7 +136,7 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
 
     text_elements = {
         "spell_name": spell.get("name", "Unbenannt"),
-        "spell_level": f"Level {spell.get('level', '')}",
+        "spell_level": f"Level {spell.get('level', '')}".capitalize(),
         "casting_time": spell.get("casting_time", ""),
         "duration": spell.get("duration", ""),
         "range": f"Range: {spell.get('range', '')}",
@@ -364,7 +364,7 @@ def export_spellcards_pdf(spells, design_config, output_dir="output", backside_o
                 elif backside_option == "preset":
                     render_backside_image(c, x, y, f"src/img/backdrop_1.png")
 
-                draw_cut_marks(c, x, y, mm_to_points(CARD_WIDTH_MM), mm_to_points(CARD_HEIGHT_MM))
+                #draw_cut_marks(c, x, y, mm_to_points(CARD_WIDTH_MM), mm_to_points(CARD_HEIGHT_MM))
 
             c.showPage()
 

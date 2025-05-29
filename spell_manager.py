@@ -555,10 +555,21 @@ class SpellManager:
         frame = ttk.Frame(editor)
         frame.pack(fill="x", pady=2)
         ttk.Label(frame, text="Wirkungsbereich:").pack(side="left", padx=(0, 10))
-        aoe_entry = ttk.Entry(frame)
-        aoe_entry.insert(0, spell_data.get("AreaOfEffect", ""))
-        aoe_entry.pack(fill="x", expand=True)
-        entries["AreaOfEffect"] = aoe_entry
+        # Vorausgefüllte Werte aus AreaOfEffect (z. B. "30 ft. cone")
+        default_aoe = spell_data.get("AreaOfEffect", "0 ft. sphere").split()
+        range_var = tk.StringVar(value=default_aoe[0])
+        shape_var = tk.StringVar(value=default_aoe[-1])
+
+        # Zahlenfeld
+        ttk.Entry(frame, textvariable=range_var, width=5).pack(side="left")
+        # ft.-Label
+        ttk.Label(frame, text="ft.").pack(side="left", padx=(5, 10))
+        # Dropdown
+        ttk.Combobox(frame, textvariable=shape_var, values=["cube", "cone", "cylinder", "line", "radius", "sphere"],
+                     state="readonly", width=10).pack(side="left")
+
+        # Kombinierte Speicherung
+        entries["AreaOfEffect"] = lambda: f"{range_var.get()} ft. {shape_var.get()}"
 
         # --- Attack/Save (Dropdown) ---
         frame = ttk.Frame(editor)
@@ -610,7 +621,7 @@ class SpellManager:
             new_spell = {
                 "source": entries["source"].get().strip(),
                 "name": entries["name"].get().strip(),
-                "level": 0 if entries["level"].get() == "Cantrip" else int(entries["level"].get()),
+                "level": 'cantrip' if entries["level"].get().strip().lower() in ("cantrip", "0") else int(entries["level"].get()),
                 "school": entries["school"].get().strip(),
                 "classes": [cls for cls, var in entries["classes"].items() if var.get()],
                 "components": {k: v.get() for k, v in entries["components"].items()},
@@ -619,7 +630,7 @@ class SpellManager:
                 "duration": entries["duration"].get().strip(),
                 "ritual": entries["ritual"].get(),
                 "description": entries["description"].get("1.0", "end").strip(),
-                "AreaOfEffect": entries["AreaOfEffect"].get().strip(),
+                "AreaOfEffect": entries["AreaOfEffect"]().strip(),
                 "AttackSave": entries["AttackSave"].get().strip(),
                 "DmgDice": [
                     {"dice": dice_entry.get().strip(), "type": type_var.get().strip()}
