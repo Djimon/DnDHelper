@@ -134,6 +134,52 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
             "intelligence": "INT", "wisdom": "WIS", "charisma": "CHA"
         }.get(save_dc.lower(), save_dc)
 
+    # Area of Effect als Icon
+    aoe_raw = spell.get("AreaOfEffect", "")
+    aoe_distance = ""
+    aoe_shape = ""
+    if aoe_raw:
+        parts = aoe_raw.lower().split("ft.")
+        if len(parts) >= 2:
+            aoe_distance = parts[0].strip() + " ft."
+            aoe_shape = parts[1].strip()
+    conf = config.get("area_of_effect", {})
+    if conf and aoe_shape:
+        icon_path = os.path.join(assets_dir, "aoe", f"{aoe_shape}.svg")  # z.B. aoe/line.svg
+        tx = px(conf)
+        ty = py(conf)
+        font_size = fs(conf)
+        icon_size = font_size + 2
+        text_size = font_size - 2
+        spacing = 1 * mm
+
+        # Text zuerst rendern
+        c.setFont(FONT_NAME, text_size)
+        c.setFillColor(fc(conf))
+        c.drawString(tx, ty - text_size + 1, aoe_distance)
+        text_width = c.stringWidth(aoe_distance, FONT_NAME, text_size)
+
+        # Icon oder Text-Fallback
+        icon_x = tx + text_width + spacing
+        icon_y = ty - text_size  # Default-Y-Wert
+
+        if os.path.exists(icon_path):
+            drawing = svg2rlg(icon_path)
+            if drawing:
+                scale = icon_size / max(drawing.width, drawing.height)
+                drawing.scale(scale, scale)
+                icon_draw_height = drawing.height * scale
+                # Vertikale Korrektur: Icon soll mittig zur Textzeile erscheinen
+                icon_y = ty - text_size + (text_size - icon_draw_height) / 2
+                renderPDF.draw(drawing, c, tx + text_width + spacing, icon_y)
+            else:
+                print(f"Fehler beim Laden von: {icon_path}")
+                c.drawString(icon_x, icon_y, f"[{aoe_shape}]")
+        else:
+            print(f"AOE-Icon nicht gefunden: {icon_path}")
+            c.drawString(icon_x, icon_y, f"[{aoe_shape}]")
+
+
     text_elements = {
         "spell_name": spell.get("name", "Unbenannt"),
         "spell_level": f"Level {spell.get('level', '')}".capitalize(),

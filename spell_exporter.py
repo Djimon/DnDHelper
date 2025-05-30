@@ -34,7 +34,7 @@ class SpellExporter:
         self.custom_backside_path = None
 
     def choose_collection(self):
-        path = filedialog.askopenfilename(filetypes=[("JSON Dateien", "*.json")])
+        path = filedialog.askopenfilename(initialdir="collections", filetypes=[("JSON Dateien", "*.json")])
         if path:
             self.collection_path = path
             self.collection_name = os.path.splitext(os.path.basename(path))[0]
