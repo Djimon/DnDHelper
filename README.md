@@ -15,7 +15,7 @@ DnDHelper ist ein Python-basiertes Tool zur Erstellung, Verwaltung und dem Expor
 DnDHelper/
 ├── collections/               # JSON-Dateien mit Zaubersammlungen
 ├── designs/                   # Designvorlagen für Zauberkarten
-├── designs/                   # PDF-dateien landen hier
+├── output/                   # PDF-dateien landen hier
 ├── src/                       # Quellcode des Projekts
 ├── card_renderer_utils.py     # Hilfsfunktionen für das Kartenrendering
 ├── export_spellcards_pdf.py   # PDF-Exportfunktionalität
