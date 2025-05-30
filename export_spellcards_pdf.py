@@ -56,13 +56,13 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     card_h = 88 * mm
     has_concentration = False
 
-    print("== Karte:", spell.get("name", "Unbenannt"), "==")
+    #print("== Karte:", spell.get("name", "Unbenannt"), "==")
 
     # Hilfsfunktionen (wie in Vorschau)
     def px(conf): return x0 + (conf.get("x", 0) / 100) * card_w
     def py(conf):
         corrected_y = ((100- conf.get("y", 0)) / 100)
-        print("Y-Pos: ", conf.get("y"), corrected_y)
+        #print("Y-Pos: ", conf.get("y"), corrected_y)
         return y0 + ((100- conf.get("y", 0)) / 100) * card_h
     def fw(conf, key): return (conf.get(key, 10) / 100) * card_w
     def fs(conf): return conf.get("font_size", 10)
@@ -71,18 +71,18 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     # Farben basierend auf Mode
     def fc_dynamic(conf, spell):
         mode = conf.get("mode", "single")
-        print(f"[fc] Mode: {mode}, Color: {conf.get('color','None')}, Spell: {conf.get('name')}")
+        #print(f"[fc] Mode: {mode}, Color: {conf.get('color','None')}, Spell: {conf.get('name')}")
         if mode == "single" or not spell:
             return HexColor(conf.get("color", "#000000"))
         if mode == "class":
             cls = (spell.get("classes") or [None])[0]
             c1 = CLASS_COLORS.get(cls.lower())
-            print("Class Color: ",HexColor(c1))
+            #print("Class Color: ",HexColor(c1))
             return HexColor(CLASS_COLORS.get(cls.lower(), "#000000")) #if cls else HexColor("#000000")
         if mode == "school":
             school = spell.get("school", "").lower()
             c1 = SCHOOL_COLORS.get(school.lower())
-            print("School Color: ", HexColor(c1))
+            #print("School Color: ", HexColor(c1))
             return HexColor(SCHOOL_COLORS.get(school, "#000000"))
         return HexColor("#000000")
 
@@ -102,10 +102,10 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
     frame = config.get("frame", {})
     color = fc_dynamic(frame, spell)
     thickness = frame.get("thickness", 1)
-    print("Rahmenfarbe (vor fc_dynamic):", frame.get("color"))
-    print("Rahmenmode:", frame.get("mode"))
-    print("Bestimmte Farbe (fc_dynamic):", fc_dynamic(frame, spell))
-    print("Dicke des Rhmens: ", thickness)
+    #print("Rahmenfarbe (vor fc_dynamic):", frame.get("color"))
+    #print("Rahmenmode:", frame.get("mode"))
+    #print("Bestimmte Farbe (fc_dynamic):", fc_dynamic(frame, spell))
+    #print("Dicke des Rhmens: ", thickness)
     c.setStrokeColor(color)
     c.setLineWidth(thickness)
     c.roundRect(x0, y0, card_w, card_h, frame.get("roundness", 0), fill=0)
@@ -207,7 +207,7 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
             para = Paragraph(text, style)
             w, h = para.wrap(max_width, 100)
             para.wrapOn(c, max_width, 100)
-            print(f"y-Pos final ({key}): {ty- h}= {ty} - {h}")
+            #print(f"y-Pos final ({key}): {ty- h}= {ty} - {h}")
             para.drawOn(c, tx, ty - h)
 
     # Desc
@@ -235,8 +235,8 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
 
     # Schadenswürfel extrahieren
     dmg_dicex = extract_damage_dice_from_description(desc)
-    print("Desc: ", desc)
-    print("extract: ",len(dmg_dicex))
+    #print("Desc: ", desc)
+    #print("extract: ",len(dmg_dicex))
     if len(dmg_dicex)>0:
         conf = config.get("damage_dice", {})
         tx = px(conf)
@@ -257,37 +257,37 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
         iy = ty - 1  # kleine Justierung, SVG beginnt oft höher ty - font_size + 1
 
         for i in range(len(dmg_dicex)):
-            print("Schadenswürfel: ", dmg_dicex[i])
+            #print("Schadenswürfel: ", dmg_dicex[i])
             # Schadenswürfel + Icon
             dmg_info = dmg_dicex[i]
             parts = dmg_info.split()
             iyX = iy - i * 10 - correctionY
             tyX = ty - i * 10 - correctionY
             if len(parts) >= 2:
-                print("Parts von damage_dice korrekt gefunden?", len(parts), parts[0], parts[1])
+                #print("Parts von damage_dice korrekt gefunden?", len(parts), parts[0], parts[1])
                 dice, dmg_type = parts[0], parts[1].lower()
                 # SVG-Icon
                 icon_path = os.path.join(assets_dir, "dmg", f"dmg_{dmg_type}.svg")
                 icon_width = 20
                 if os.path.exists(icon_path):
-                    print(f"SVG gefunden: {icon_path}")
+                    #print(f"SVG gefunden: {icon_path}")
                     drawing = svg2rlg(icon_path)
                     if drawing:
                         scale = icon_size / max(drawing.width, drawing.height)
-                        print(f"SVG Size: {drawing.width}x{drawing.height}")
-                        print("Debug: svg-Scale: ", scale)
-                        print(f"Icon {dmg_type} → Pos: ({tx}, {ty}) / Path: {icon_path}")
+                        #print(f"SVG Size: {drawing.width}x{drawing.height}")
+                        #print("Debug: svg-Scale: ", scale)
+                        #print(f"Icon {dmg_type} → Pos: ({tx}, {ty}) / Path: {icon_path}")
                         drawing.scale(scale, scale)
-                        print("y-pos-correction: ", iy, iyX)
+                        #print("y-pos-correction: ", iy, iyX)
                         icon_width = drawing.width * scale
-                        print("finale y-Pos icon: ", iyX)
+                        #print("finale y-Pos icon: ", iyX)
                         renderPDF.draw(drawing, c, ix, iyX)
                     else:
                         print("SVG konnte nicht geladen werden.")
                         # Fallback: Kürzel als Text
                         icon_width = c.stringWidth(f"[{dmg_type.upper()}]", FONT_NAME, font_size)
                         w, h = para.wrap(icon_width, 100)
-                        print("finale y-Pos Text, h: ", iyX, h)
+                        #print("finale y-Pos Text, h: ", iyX, h)
                         c.drawString(ix, tyX - h, f"[{dmg_type.lower()}]")
                 else:
                     print("SVG-Pfad fehlt:", icon_path)
@@ -317,7 +317,7 @@ def render_card_pdf(c, x0, y0, spell, config, assets_dir="src/img"):
             if drawing:
                 scale = min(iw / drawing.width, ih / drawing.height)
                 drawing.scale(scale, scale)
-                print(f"CON-icon: {ix},{iy} scale: {scale}, h:{ih}, w:{iw}")
+                #print(f"CON-icon: {ix},{iy} scale: {scale}, h:{ih}, w:{iw}")
                 renderPDF.draw(drawing, c, ix, iy -ih)
             else:
                 print("SVG konnte nicht geladen werden:", icon_path)
